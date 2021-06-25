@@ -1,10 +1,18 @@
 {
   "resources": [
     {"id":{"name":"spr_tempplayer","path":"sprites/spr_tempplayer/spr_tempplayer.yy",},"order":1,},
+    {"id":{"name":"obj_block","path":"objects/obj_block/obj_block.yy",},"order":5,},
+    {"id":{"name":"spr_shield","path":"sprites/spr_shield/spr_shield.yy",},"order":3,},
+    {"id":{"name":"obj_attack","path":"objects/obj_attack/obj_attack.yy",},"order":4,},
+    {"id":{"name":"obj_gamepadJunk","path":"objects/obj_gamepadJunk/obj_gamepadJunk.yy",},"order":3,},
     {"id":{"name":"obj_player_keyboard","path":"objects/obj_player_keyboard/obj_player_keyboard.yy",},"order":1,},
     {"id":{"name":"obj_player_controller","path":"objects/obj_player_controller/obj_player_controller.yy",},"order":2,},
+    {"id":{"name":"setup_Room","path":"rooms/setup_Room/setup_Room.yy",},"order":1,},
     {"id":{"name":"obj_walls","path":"objects/obj_walls/obj_walls.yy",},"order":0,},
     {"id":{"name":"spr_texturelesswall","path":"sprites/spr_texturelesswall/spr_texturelesswall.yy",},"order":0,},
+    {"id":{"name":"scr_playerMovement","path":"scripts/scr_playerMovement/scr_playerMovement.yy",},"order":0,},
+    {"id":{"name":"spr_attackRange","path":"sprites/spr_attackRange/spr_attackRange.yy",},"order":2,},
+    {"id":{"name":"scr_playerCombat","path":"scripts/scr_playerCombat/scr_playerCombat.yy",},"order":1,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
@@ -19,6 +27,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"setup_Room","path":"rooms/setup_Room/setup_Room.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "Folders": [

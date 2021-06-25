@@ -1,59 +1,47 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-keyboardRight = keyboard_check(ord("D"))
-keyboardLeft = keyboard_check(ord("A"))
-keyboardJump = keyboard_check_pressed(vk_space)
-keyboardJumpheld = keyboard_check(vk_space)
-keyboardDown = keyboard_check(ord("S"))
-
+//Initialize controls
+gamepad_set_axis_deadzone(controllerPlayer, 0.1)
 controllerRight = gamepad_button_check(controllerPlayer, gp_padr)
 controllerLeft = gamepad_button_check(controllerPlayer, gp_padl)
 controllerJump = gamepad_button_check_pressed(controllerPlayer, gp_face1)
 controllerJumpheld = gamepad_button_check(controllerPlayer, gp_face1)
 controllerDown = gamepad_button_check(controllerPlayer, gp_padd)
+controllerDownheld = gamepad_button_check_pressed(controllerPlayer, gp_padd)
+controllerDash = gamepad_button_check(controllerPlayer, gp_shoulderr) || gamepad_button_check(controllerPlayer, gp_shoulderl)
+controllerUp = gamepad_button_check(controllerPlayer, gp_padu)
+controllerBlock = gamepad_button_check_pressed(controllerPlayer, gp_shoulderlb) || gamepad_button_check_pressed(controllerPlayer, gp_shoulderrb)
+controllerBlockrelease = gamepad_button_check_released(controllerPlayer, gp_shoulderlb) || gamepad_button_check_released(controllerPlayer, gp_shoulderrb)
+haxRight = gamepad_axis_value(controllerPlayer, gp_axisrh);
+vaxRight = gamepad_axis_value(controllerPlayer, gp_axisrv);
+rightStickDirection = point_direction(0, 0, haxRight, vaxRight);
+haxLeft = gamepad_axis_value(controllerPlayer, gp_axislh);
+vaxLeft = gamepad_axis_value(controllerPlayer, gp_axislv);
+leftStickDirection = point_direction(0, 0, haxLeft, vaxLeft);
 
-vspd += grav
+//Call movement scripts
+scr_playerMovement(controllerRight, controllerLeft, controllerJump, controllerJumpheld, controllerDown, controllerDownheld, controllerDash, controllerUp);
 
-if controllerRight
+scr_playerDashing(controllerRight, controllerLeft, controllerJump, controllerJumpheld, controllerDown, controllerDownheld, controllerDash, controllerUp);
+
+//If blocking, call block script
+if controllerBlock
 {
-	if hspd < 0
-	{
-	hspd += haccel * 3
-	}
-	hspd += haccel;
-} 
-
-
-if controllerLeft
-{
-	if hspd > 0
-	{
-	hspd -= haccel * 3
-	}
-	hspd -= haccel;
+	scr_playerBlockingGamepad(leftStickDirection, id)
 }
 
-if controllerJump
+//If timer between attacks is up, allow player to attack again
+if alarm[2] < 0
 {
-	if jumps > 0
+	if haxRight > 0 or haxRight < 0 
 	{
-		vspd = 0
-		vspd -= jspd
-		jumps -= 1
+		scr_playerAttackingGamepad(rightStickDirection, id)
+		alarm[2] = room_speed / 3
 	}
-}
-
-if vspd < 0 and !controllerJumpheld vspd = max(vspd, -jspd/2);
-
-if !controllerJump and place_meeting(x, y + 1, obj_walls)
-{
-	vspd = 0
-	jumps = 2
-}
-
-if !controllerRight and !controllerLeft
-{
-hspd -= sign(hspd) * haccel * 3
-
+ 
+	else if vaxRight > 0 or vaxRight < 0
+	{
+		scr_playerAttackingGamepad(rightStickDirection, id)	
+		alarm[2] = room_speed / 3
+	}
 }

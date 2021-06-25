@@ -1,6 +1,7 @@
 /// @description Checking collisions + finalising movement
 // You can write your code in this editor
 
+//Set vspd and hspd to 0 if colliding with object
 repeat ( abs(hspd) ) {
     if ( !place_meeting(x + sign(hspd), y, obj_walls) ) {
         x += sign(hspd);
