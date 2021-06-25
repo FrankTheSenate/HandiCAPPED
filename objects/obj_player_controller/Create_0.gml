@@ -14,6 +14,7 @@ controllerPlayer = -2
 playerhealth = 100
 
 //Assign controller to player
+// pees epically
 for (var i = 0; i < array_length(obj_gamepadJunk.playerInputDevice);i++)
 {
 	if obj_gamepadJunk.playerInputDevice[i] > -1

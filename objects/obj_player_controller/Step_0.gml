@@ -1,6 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 //Initialize controls
+// pees less epically
 gamepad_set_axis_deadzone(controllerPlayer, 0.1)
 controllerRight = gamepad_button_check(controllerPlayer, gp_padr)
 controllerLeft = gamepad_button_check(controllerPlayer, gp_padl)

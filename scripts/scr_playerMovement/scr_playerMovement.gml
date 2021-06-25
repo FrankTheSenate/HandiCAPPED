@@ -35,7 +35,7 @@ else
 //Horizontal speed limiter
 if abs(hspd) > abs(maxHspeed)
 {
-	hspd -= sign(hspd)*haccel
+	hspd -= sign(hspd) * haccel
 }
 
 //Vertical speed limiter
