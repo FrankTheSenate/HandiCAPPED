@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_tempplayer",
-    "path": "sprites/spr_tempplayer/spr_tempplayer.yy",
+    "name": "spr_mohammad",
+    "path": "sprites/spr_mohammad/spr_mohammad.yy",
   },
   "solid": false,
   "visible": true,
